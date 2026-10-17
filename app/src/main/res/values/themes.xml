@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- App theme and reusable widget styles. Restyle here rather than in individual layouts. -->
+<resources>
+    <style name="Theme.MpsDiag" parent="android:Theme.Material">
+        <item name="android:colorPrimary">@color/brand_primary</item>
+        <item name="android:colorPrimaryDark">@color/brand_primary_dark</item>
+        <item name="android:colorAccent">@color/brand_accent</item>
+        <item name="android:windowBackground">@color/bg_window</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:statusBarColor">@color/brand_primary_dark</item>
+    </style>
+
+    <style name="Card">
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:padding">@dimen/card_padding</item>
+        <item name="android:layout_marginBottom">@dimen/gap</item>
+    </style>
+
+    <style name="Text.Title" parent="android:TextAppearance.Material.Title">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">@dimen/text_title</item>
+    </style>
+
+    <style name="Text.Body" parent="android:TextAppearance.Material.Body1">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <style name="Text.Secondary" parent="android:TextAppearance.Material.Body1">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+
+    <style name="Button.Primary" parent="android:Widget.Material.Button.Colored">
+        <item name="android:textColor">@color/text_on_primary</item>
+        <item name="android:minHeight">52dp</item>
+    </style>
+
+    <style name="Button.Secondary" parent="android:Widget.Material.Button">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:minHeight">52dp</item>
+    </style>
+
+    <!-- Large tile on the home screen. -->
+    <style name="MenuTile">
+        <item name="android:background">@drawable/bg_tile</item>
+        <item name="android:padding">@dimen/card_padding</item>
+        <item name="android:layout_marginBottom">@dimen/gap</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+</resources>

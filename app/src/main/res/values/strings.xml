@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MPS Diag</string>
+
+    <!-- Connection -->
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="connecting">Connecting to %1$s…</string>
+    <string name="connected_to">Connected: %1$s</string>
+    <string name="not_connected">No adapter connected</string>
+    <string name="connect_failed">Connection failed: %1$s</string>
+    <string name="pick_adapter">Choose OBD adapter</string>
+    <string name="scan_ble">Scan BLE</string>
+    <string name="scanning">Scanning for BLE adapters…</string>
+    <string name="bt_not_available">This phone has no Bluetooth</string>
+    <string name="bt_turn_on">Turn Bluetooth on first</string>
+    <string name="permission_needed">Bluetooth permission is needed to talk to the adapter</string>
+    <string name="connect_first">Connect to an adapter first</string>
+
+    <!-- Home -->
+    <string name="menu_dpf">DPF</string>
+    <string name="menu_dpf_desc">Live data, forced regeneration, DPF replacement</string>
+    <string name="menu_oil">Engine oil</string>
+    <string name="menu_oil_desc">Oil dilution / oil change reset</string>
+    <string name="menu_dtc">Fault codes</string>
+    <string name="menu_dtc_desc">Read and clear module errors</string>
+    <string name="menu_log">Adapter log</string>
+    <string name="menu_log_desc">Raw traffic with the adapter</string>
+
+    <!-- Common -->
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="read">Read</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="error_prefix">Error: %1$s</string>
+    <string name="done">Done</string>
+    <string name="working">Working…</string>
+    <string name="value_na">—</string>
+    <string name="clear_log">Clear</string>
+    <string name="share_log">Share</string>
+</resources>

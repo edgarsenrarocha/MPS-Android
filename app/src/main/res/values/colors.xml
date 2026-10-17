@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- All app colours live here: change these to restyle the whole app. -->
+<resources>
+    <color name="brand_primary">#E4002B</color>
+    <color name="brand_primary_dark">#A8001F</color>
+    <color name="brand_accent">#FF5A5F</color>
+
+    <color name="bg_window">#121417</color>
+    <color name="bg_card">#1D2024</color>
+    <color name="bg_card_pressed">#2A2E33</color>
+    <color name="divider">#33373D</color>
+
+    <color name="text_primary">#F2F3F5</color>
+    <color name="text_secondary">#A6ABB3</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <color name="status_ok">#3DDC84</color>
+    <color name="status_warn">#FFB020</color>
+    <color name="status_error">#FF4D4F</color>
+    <color name="status_idle">#6B7178</color>
+</resources>
