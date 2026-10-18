@@ -55,7 +55,7 @@ class InputField(
     /** Null if [v] is acceptable, otherwise the reason. */
     fun validate(v: Int?): String? = when {
         v == null -> "Enter $label"
-        choices != null -> null
+        choices != null -> if (choices.getOrNull(v).let { it == null || it == "-" }) "Choose a valid $label" else null
         v < min || v > max -> "$label must be between $min and $max"
         v % multipleOf != 0 -> "$label must be a multiple of $multipleOf"
         else -> null

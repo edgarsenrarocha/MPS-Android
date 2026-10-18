@@ -1,18 +1,34 @@
 # MPS Scan Tool
 
-An Android diagnostics app for Mitsubishi diesels (4N15 / 4N14: Pajero Sport III, Triton/L200,
-Outlander, Delica D:5) using a cheap ELM327 OBD adapter.
+An Android diagnostics app for Mitsubishi vehicles (Pajero Sport II/III, Pajero IV, Triton/L200,
+Outlander, Delica D:5, Eclipse Cross, Xpander) using a cheap ELM327 OBD adapter.
 
-Current features:
+Features:
 
-- **DPF**: live data (33 values: soot load, temperatures, differential pressure, regeneration
-  state and time remaining, counters, warning lights), **forced regeneration**, and the
-  **DPF service resets** (DPF replaced, pressure sensor replaced, malfunction service).
-- **Engine oil**: estimated oil level / consumption / fuel dilution, and the **oil service reset**
-  that clears P252F after an oil change.
 - **Fault codes**: read and clear codes in each module (engine, transmission, ABS, SRS, ETACS,
   A/C, 4WD, EPB, cluster, …), "scan all modules", and generic OBD-II.
+- **Engine**
+  - **DPF**: 33 live values, **forced regeneration** (4N15 / 4N14) and the **DPF service resets**.
+  - **Engine oil**: oil level / consumption / dilution and the **oil service reset** (P252F).
+  - Live data: **diesel** (4D56 / 4M41 / 4N14 / 4N15, 85 values), **petrol 6B31** (37),
+    **Eclipse Cross 4B40** (29), **Xpander 4A91** (55) and **generic OBD-II** (23).
+- **Transmission & 4WD**: automatic transmission data (W6AJA, V4A5A/V5A5A, W8AWA/V8AWG – type
+  detected automatically) and the Super Select 4WD II transfer case.
+- **Brakes, steering & body**: ABS / ASC data, instrument cluster data and **service-reminder
+  settings**.
+- **Service functions**: fuel leak test, injector test, high-pressure pump valve
+  initialisation, small injection quantity learning and learned values (with limits), battery
+  current sensor calibration, A/T adaptation reset / INVECS-II stop, steering angle sensor
+  calibration / initialisation, electric parking brake service position.
+- **Connection test**: adapter, battery voltage, CAN bus, engine ECU (VIN, engine, ECU firmware,
+  odometer, DPF support).
 - **Adapter log**: raw traffic, shareable, for troubleshooting.
+
+On every live screen, **Choose values** (menu) limits the list to what you need – fewer values
+refresh faster – and **Choose type** switches engine / transmission variants where they apply.
+
+Not included: TPMS sensor registration and injector code writing (they need the ECU's security
+access), USB adapters, and the K-line SRS module of the older Pajero Sport (KH) / L200.
 
 Adapters: classic Bluetooth (most ELM327 / vLinker), Bluetooth LE (Vgate iCar, OBDLink CX, …)
 and Wi-Fi (default `192.168.0.10:35000`). Requires Android 6.0 or newer.
@@ -53,7 +69,6 @@ the module again after clearing so you can see that.
 > Use at your own risk. These commands change ECU state. Read fault codes first and fix real
 > faults before forcing a regeneration.
 
-Not yet supported: USB adapters, and the K-line SRS module on the older Pajero Sport (KH) / L200.
 
 ## Restyling
 

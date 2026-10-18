@@ -8,6 +8,22 @@ import java.io.IOException
  */
 object ConnectionTest {
 
+    private fun <T> optional(block: () -> T): T? = try {
+        block()
+    } catch (_: IOException) {
+        null
+    } catch (_: IndexOutOfBoundsException) {
+        null
+    }
+
+    /** Firmware id: bytes 11–20 of the `5A 9C` reply, as text when printable. */
+    fun firmwareId(r: ByteArray): String? {
+        if (r.size < 21) return null
+        val raw = r.copyOfRange(11, 21)
+        val printable = raw.all { it in 0x20..0x7E }
+        return if (printable) String(raw, Charsets.US_ASCII).trim() else raw.toHex(" ")
+    }
+
     enum class Outcome { OK, WARN, FAIL }
 
     data class Step(val title: String, val outcome: Outcome, val detail: String)
@@ -63,10 +79,14 @@ object ConnectionTest {
                 null
             }
             val engine = Dpf.engineFromVin(vin)
+            val firmware = optional { firmwareId(diag.request(0x1A, 0x9C)) }
+            val odometer = optional { diag.request(0x21, 0x03).u24(3) }
             val detail = buildString {
                 append("Diagnostic session open")
                 if (vin != null) append("\nVIN ").append(vin)
                 if (engine != null) append("\nEngine ").append(engine.label)
+                if (firmware != null) append("\nECU firmware ").append(firmware)
+                if (odometer != null) append("\nOdometer (ECU) ").append(odometer).append(" km")
                 append(if (dpfSupported) "\nDPF functions available" else "\nDPF functions not supported by this ECU")
             }
             report(Step("Engine ECU", if (dpfSupported) Outcome.OK else Outcome.WARN, detail))
