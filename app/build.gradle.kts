@@ -13,8 +13,8 @@ android {
         // 34, not 35: Android 15 forces edge-to-edge drawing on apps targeting 35, which puts
         // content under the title and navigation bars of these framework (non-AndroidX) screens.
         targetSdk = 34
-        versionCode = 6
-        versionName = "0.4.2"
+        versionCode = 7
+        versionName = "0.4.3"
     }
 
     signingConfigs {

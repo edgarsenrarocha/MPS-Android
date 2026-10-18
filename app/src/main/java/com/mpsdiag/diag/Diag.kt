@@ -35,6 +35,7 @@ class Diag(val elm: Elm327) {
         elm.at("ATAT1")       // adaptive timing
         elm.at("ATST80")      // wait up to ~0.5 s for a module to answer
         target = null
+        inSession.clear()
         return version
     }
 
@@ -62,8 +63,33 @@ class Diag(val elm: Elm327) {
      */
     @Throws(IOException::class)
     fun open(module: Module) {
+        if (module.obd) {
+            leaveSessions()
+            select(module)
+            return
+        }
         select(module)
-        if (!module.obd) request(0x10, 0x92)
+        request(0x10, 0x92)
+        if (module.requestId in EMISSION_IDS) inSession += module
+    }
+
+    /** Emission-related ECUs (7E0–7E7) we put in the Mitsubishi session; they ignore OBD-II there. */
+    private val inSession = mutableSetOf<Module>()
+
+    /**
+     * Returns those ECUs to the default session (10 81) so generic OBD-II requests are
+     * answered again. Errors are ignored: the session also ends by itself after a few seconds
+     * without traffic.
+     */
+    private fun leaveSessions() {
+        for (m in inSession.toList()) {
+            try {
+                select(m)
+                request(0x10, 0x81)
+            } catch (_: IOException) {
+            }
+        }
+        inSession.clear()
     }
 
     /**
@@ -113,6 +139,8 @@ class Diag(val elm: Elm327) {
     private fun ByteArray.nrcCode() = this[2].toInt() and 0xFF
 
     companion object {
+        private val EMISSION_IDS = 0x7E0..0x7E7
+
         private const val PENDING_TIMEOUT_MS = 30_000L
 
         /**

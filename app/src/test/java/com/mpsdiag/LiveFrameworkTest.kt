@@ -59,6 +59,28 @@ class LiveFrameworkTest {
     }
 
     @Test
+    fun obdWorksAfterMitsubishiSession() {
+        // Like the real 4N15 ECU: while in session 92 it ignores generic OBD-II requests.
+        var extended = false
+        val fake = FakeElm { tx, req ->
+            val r = req.joinToString("") { "%02X".format(it) }
+            when {
+                tx == 0x7E0 && r == "1092" -> { extended = true; listOf(bytes(0x50, 0x92)) }
+                tx == 0x7E0 && r == "1081" -> { extended = false; listOf(bytes(0x50, 0x81)) }
+                tx == 0x7E0 && r == "2101" -> listOf(bytes(0x61, 0x01, 0x20))
+                tx == 0x7DF && r == "010C" -> if (extended) null else listOf(bytes(0x41, 0x0C, 0x0B, 0xB8))
+                else -> null
+            }
+        }
+        val d = connect(fake)
+        d.open(Modules.ENGINE)
+        d.request(0x21, 0x01)
+        d.open(Modules.OBD2)
+        assertEquals(750, d.request(0x01, 0x0C).let { (it.u8(2) shl 8 or it.u8(3)) / 4 })
+        assertEquals(1, fake.requests.count { it == "7E0: 1081" })
+    }
+
+    @Test
     fun inputValidation() {
         val km = InputField("Distance", min = 100, max = 100_000, multipleOf = 100)
         assertNull(km.validate(15_000))
