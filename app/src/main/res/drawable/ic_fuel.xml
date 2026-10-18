@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generated from tools/icons.py; white so it can be tinted (android:tint / setImageTintList). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#00000000" android:strokeColor="#FFFFFFFF" android:strokeWidth="1.8"
+        android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M4,20 V5 a1,1 0 0 1 1,-1 h7 a1,1 0 0 1 1,1 v15 M3,20 h11 M6.5,8 h4" />
+    <path android:fillColor="#00000000" android:strokeColor="#FFFFFFFF" android:strokeWidth="1.8"
+        android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M13,10 h2 a1.5,1.5 0 0 1 1.5,1.5 v4 a1.5,1.5 0 0 0 3,0 V8 l-3,-3" />
+</vector>

@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false">
-        <shape><solid android:color="@color/bg_card" /><corners android:radius="@dimen/card_radius" /></shape>
-    </item>
-    <item android:state_pressed="true">
-        <shape><solid android:color="@color/bg_card_pressed" /><corners android:radius="@dimen/card_radius" /></shape>
-    </item>
-    <item>
-        <shape><solid android:color="@color/bg_card" /><corners android:radius="@dimen/card_radius" /></shape>
-    </item>
-</selector>
+<!-- Tappable card: ripple on the card shape. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/ripple">
+    <item android:drawable="@drawable/bg_card" />
+</ripple>

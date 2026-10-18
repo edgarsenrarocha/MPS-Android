@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Home-screen tile: icon, title, one-line description. Two per row. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/MenuTile"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:minHeight="132dp"
     android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/tileIcon"
+        style="@style/IconBadge"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_wrench" />
 
     <TextView
         android:id="@+id/tileTitle"
         style="@style/Text.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:textSize="@dimen/text_body" />
 
     <TextView
         android:id="@+id/tileSubtitle"
-        style="@style/Text.Secondary"
-        android:layout_width="wrap_content"
+        style="@style/Text.Caption"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp" />
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:maxLines="2" />
 </LinearLayout>

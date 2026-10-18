@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Simple gauge-style mark. Replace with your own artwork when restyling. -->
+<!-- Launcher foreground: engine with a pulse line inside a gauge arc (108dp canvas, 72dp visible). -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="108dp" android:height="108dp"
-    android:viewportWidth="108" android:viewportHeight="108">
-    <path android:fillColor="#00000000" android:strokeColor="#FFFFFF" android:strokeWidth="6"
-        android:strokeLineCap="round"
-        android:pathData="M34,68 A24,24 0 1,1 74,68" />
-    <path android:fillColor="#FFFFFF" android:pathData="M54,56 L68,40 L58,58 Z" />
-    <path android:fillColor="#FFFFFF" android:pathData="M50,58 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#00000000" android:strokeColor="#66FF6B1A" android:strokeWidth="2.6"
+        android:strokeLineCap="round" android:pathData="M34.2,73.8 A28,28 0 1,1 73.8,73.8" />
+    <group android:translateX="27.6" android:translateY="29.7" android:scaleX="2.2" android:scaleY="2.2">
+        <path android:fillColor="@color/brand_primary" android:pathData="M8,5 h6 v2 h-2 v1 h3 l2,2 h1.5 v-1.5 h2.5 v8 h-2.5 V15 H17 l-2,3 H9 l-2.5,-2.5 H5 v2.5 H3 V9.5 h2 V12 h1.5 V10 L8,8 h2 V7 H8 Z" />
+        <path android:fillColor="#00000000" android:strokeColor="@color/icon_background" android:strokeWidth="1.2"
+            android:strokeLineCap="round" android:strokeLineJoin="round"
+            android:pathData="M6.8,13 h2.6 l1.1,-2.2 l1.6,4.2 l1.5,-3 h4" />
+    </group>
 </vector>

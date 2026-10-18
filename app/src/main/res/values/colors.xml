@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- All app colours live here: change these to restyle the whole app. -->
 <resources>
-    <color name="brand_primary">#E4002B</color>
-    <color name="brand_primary_dark">#A8001F</color>
-    <color name="brand_accent">#FF5A5F</color>
+    <!-- Brand -->
+    <color name="brand_primary">#FF6B1A</color>
+    <color name="brand_primary_dark">#E0560B</color>
+    <color name="brand_accent">#FF8A47</color>
+    <color name="brand_primary_soft">#26FF6B1A</color>
+    <color name="icon_background">#14181F</color>
 
-    <color name="bg_window">#121417</color>
-    <color name="bg_card">#1D2024</color>
-    <color name="bg_card_pressed">#2A2E33</color>
-    <color name="divider">#33373D</color>
+    <!-- Surfaces -->
+    <color name="bg_window">#0E1116</color>
+    <color name="bg_card">#171B22</color>
+    <color name="bg_card_raised">#1F242D</color>
+    <color name="bg_card_pressed">#272D38</color>
+    <color name="stroke">#262C36</color>
+    <color name="divider">#262C36</color>
+    <color name="ripple">#33FFFFFF</color>
 
-    <color name="text_primary">#F2F3F5</color>
-    <color name="text_secondary">#A6ABB3</color>
+    <!-- Text -->
+    <color name="text_primary">#F3F5F7</color>
+    <color name="text_secondary">#9AA3AE</color>
+    <color name="text_tertiary">#6B7480</color>
     <color name="text_on_primary">#FFFFFF</color>
 
-    <color name="status_ok">#3DDC84</color>
+    <!-- Status -->
+    <color name="status_ok">#2ECC71</color>
     <color name="status_warn">#FFB020</color>
     <color name="status_error">#FF4D4F</color>
     <color name="status_idle">#6B7178</color>

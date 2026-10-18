@@ -51,6 +51,7 @@
                     style="@style/Button.Primary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/gap_small"
                     android:layout_weight="1"
                     android:text="@string/conn_test" />
 
@@ -117,6 +118,7 @@
                     style="@style/Button.Primary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/gap_small"
                     android:layout_weight="1" />
 
                 <Button

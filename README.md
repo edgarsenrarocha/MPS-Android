@@ -82,6 +82,8 @@ All styling is in resources, so most changes don't touch code:
 | Card / tile shapes | `app/src/main/res/drawable/bg_card.xml`, `bg_tile.xml` |
 | Screen layouts | `app/src/main/res/layout/*.xml` |
 | App icon | `app/src/main/res/drawable/ic_launcher_foreground.xml`, `mipmap*/ic_launcher.xml` |
+| In-app icons | `app/src/main/res/drawable/ic_*.xml`, generated from `tools/icons.py` |
+| Which icon each screen uses | `app/src/main/java/com/mpsdiag/ui/Icons.kt` |
 | Texts | `app/src/main/res/values/strings.xml` |
 
 The UI uses only the Android framework (no AndroidX), so the project builds without Google's

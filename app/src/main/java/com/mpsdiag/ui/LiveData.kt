@@ -8,7 +8,7 @@ import com.mpsdiag.R
 import com.mpsdiag.Session
 import com.mpsdiag.diag.Diag
 
-/** Fills [container] with one "label / value" row per label and updates the values in place. */
+/** Fills [container] with one value tile per label (two per row) and updates the values in place. */
 class LiveDataPanel(container: LinearLayout, labels: List<String>) {
 
     private val values: List<TextView>
@@ -16,16 +16,17 @@ class LiveDataPanel(container: LinearLayout, labels: List<String>) {
     init {
         container.removeAllViews()
         val inflater = LayoutInflater.from(container.context)
-        values = labels.map { label ->
-            val row = inflater.inflate(R.layout.item_param, container, false)
-            row.findViewById<TextView>(R.id.paramLabel).text = label
-            container.addView(row)
-            row.findViewById(R.id.paramValue)
+        val tiles = labels.map { label ->
+            inflater.inflate(R.layout.item_param, container, false).also {
+                it.findViewById<TextView>(R.id.paramLabel).text = label
+            }
         }
+        values = tiles.map { it.findViewById(R.id.paramValue) }
+        Grid.fill(container, tiles)
     }
 
     fun update(newValues: List<String>) {
-        newValues.forEachIndexed { i, v -> if (i < values.size) values[i].text = v }
+        newValues.forEachIndexed { i, v -> if (i < values.size && values[i].text.toString() != v) values[i].text = v }
     }
 }
 

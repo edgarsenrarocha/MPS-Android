@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MPS Scan Tool</string>
+    <string name="app_tagline">Mitsubishi diagnostics</string>
+    <string name="adapter">OBD adapter</string>
+    <string name="chip_connected">Connected</string>
+    <string name="chip_connecting">Connecting</string>
+    <string name="chip_offline">Offline</string>
+    <string name="manage_connection">Connection &amp; test</string>
 
     <!-- Connection -->
     <string name="connect">Connect</string>
@@ -115,4 +121,12 @@
     <string name="dtc_clear_failed">Could not clear codes in %1$s: %2$s\nThe fault may still be present — fix it and try again.</string>
     <string name="dtc_scanning">Scanning %1$s (%2$d of %3$d)…</string>
     <string name="dtc_no_answer">no answer</string>
+    <string name="dtc_share">Share report</string>
+    <string name="dtc_summary">%1$d fault code(s) in %2$d module(s)</string>
+    <string name="dtc_summary_none">No fault codes found</string>
+    <string name="dtc_no_faults_in">No faults: %1$s</string>
+    <string name="dtc_no_answer_from">No answer (not fitted to this car): %1$s</string>
+    <string name="dtc_status_current">Current</string>
+    <string name="dtc_status_pending">Pending</string>
+    <string name="dtc_status_stored">Stored</string>
 </resources>

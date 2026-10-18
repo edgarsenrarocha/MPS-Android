@@ -16,7 +16,7 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.Secondary"
+                style="@style/Text.Caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dtc_module" />
@@ -26,28 +26,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/readButton"
-                style="@style/Button.Primary"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dtc_read" />
+                android:layout_marginTop="@dimen/gap_small"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/clearButton"
-                style="@style/Button.Secondary"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dtc_clear" />
+                <Button
+                    android:id="@+id/readButton"
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/gap_small"
+                    android:layout_weight="1"
+                    android:text="@string/dtc_read" />
+
+                <Button
+                    android:id="@+id/clearButton"
+                    style="@style/Button.Secondary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/dtc_clear" />
+            </LinearLayout>
         </LinearLayout>
 
         <Button
@@ -59,12 +61,26 @@
             android:text="@string/dtc_scan_all" />
 
         <TextView
-            android:id="@+id/resultText"
+            android:id="@+id/statusText"
             style="@style/Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/Text.Body"
-            android:textIsSelectable="true"
+            android:textAppearance="@style/Text.Secondary"
             android:text="@string/dtc_hint" />
+
+        <!-- Result cards are added from DtcActivity -->
+        <LinearLayout
+            android:id="@+id/resultList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/shareButton"
+            style="@style/Button.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dtc_share"
+            android:visibility="gone" />
     </LinearLayout>
 </ScrollView>
