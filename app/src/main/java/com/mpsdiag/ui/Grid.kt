@@ -17,9 +17,11 @@ object Grid {
                 if (i > 0) lp.marginStart = gap
                 row.addView(tile, lp)
             }
-            // Keep the last tile half-width when the count is odd.
+            // Keep the last tile half-width when the count is odd. The filler must also be
+            // MATCH_PARENT: a wrap_content LinearLayout whose children aren't all MATCH_PARENT
+            // sizes itself from the others only, which collapsed single-tile rows to zero height.
             repeat(columns - rowTiles.size) {
-                row.addView(View(container.context), LinearLayout.LayoutParams(0, 0, 1f).apply { marginStart = gap })
+                row.addView(View(container.context), LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply { marginStart = gap })
             }
             container.addView(row, LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT,
