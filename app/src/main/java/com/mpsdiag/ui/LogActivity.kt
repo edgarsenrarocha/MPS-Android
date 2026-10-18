@@ -39,7 +39,7 @@ class LogActivity : Activity() {
         findViewById<Button>(R.id.shareButton).setOnClickListener {
             val send = Intent(Intent.ACTION_SEND)
                 .setType("text/plain")
-                .putExtra(Intent.EXTRA_SUBJECT, "MPS Diag adapter log")
+                .putExtra(Intent.EXTRA_SUBJECT, "MPS Scan Tool adapter log")
                 .putExtra(Intent.EXTRA_TEXT, snapshot())
             startActivity(Intent.createChooser(send, getString(R.string.share_log)))
         }

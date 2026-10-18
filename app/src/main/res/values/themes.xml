@@ -42,6 +42,16 @@
         <item name="android:minHeight">52dp</item>
     </style>
 
+    <!-- Section heading on the home screen. -->
+    <style name="SectionHeader" parent="android:TextAppearance.Material.Body2">
+        <item name="android:textColor">@color/brand_accent</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:paddingTop">@dimen/gap</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+
     <!-- Large tile on the home screen. -->
     <style name="MenuTile">
         <item name="android:background">@drawable/bg_tile</item>

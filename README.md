@@ -1,4 +1,4 @@
-# MPS Diag
+# MPS Scan Tool
 
 An Android diagnostics app for Mitsubishi diesels (4N15 / 4N14: Pajero Sport III, Triton/L200,
 Outlander, Delica D:5) using a cheap ELM327 OBD adapter.
@@ -19,7 +19,7 @@ and Wi-Fi (default `192.168.0.10:35000`). Requires Android 6.0 or newer.
 
 ## Install on your phone
 
-1. Copy `mps-diag.apk` to the phone and open it.
+1. Copy `mps-scan-tool.apk` to the phone and open it.
 2. Allow "install unknown apps" for the app you opened it with (Files, Chrome, …) when asked.
 3. Pair your Bluetooth adapter in Android's Bluetooth settings first (PIN is usually `1234` or
    `0000`). BLE and Wi-Fi adapters don't need pairing.
@@ -80,7 +80,7 @@ sign with `signing/debug.keystore`, so an APK from either installs over the othe
 **Command line, no Gradle** (how the APK here was built):
 
 ```sh
-./tools/build.sh   # -> build/mps-diag.apk
+./tools/build.sh   # -> build/mps-scan-tool.apk
 ./tools/test.sh    # protocol tests against a simulated adapter + car
 ```
 

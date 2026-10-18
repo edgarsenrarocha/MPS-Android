@@ -39,6 +39,7 @@
         <activity android:name="com.mpsdiag.ui.DpfActivity" android:label="@string/menu_dpf" />
         <activity android:name="com.mpsdiag.ui.OilActivity" android:label="@string/menu_oil" />
         <activity android:name="com.mpsdiag.ui.DtcActivity" android:label="@string/menu_dtc" />
+        <activity android:name="com.mpsdiag.ui.LiveDataActivity" />
         <activity android:name="com.mpsdiag.ui.LogActivity" android:label="@string/menu_log" />
     </application>
 </manifest>

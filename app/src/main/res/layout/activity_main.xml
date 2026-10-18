@@ -41,9 +41,11 @@
                 android:text="@string/connect" />
         </LinearLayout>
 
-        <include android:id="@+id/tileDpf" layout="@layout/item_menu_tile" />
-        <include android:id="@+id/tileOil" layout="@layout/item_menu_tile" />
-        <include android:id="@+id/tileDtc" layout="@layout/item_menu_tile" />
-        <include android:id="@+id/tileLog" layout="@layout/item_menu_tile" />
+        <!-- Sections and tiles are added from MainActivity.MENU -->
+        <LinearLayout
+            android:id="@+id/menuList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
     </LinearLayout>
 </ScrollView>

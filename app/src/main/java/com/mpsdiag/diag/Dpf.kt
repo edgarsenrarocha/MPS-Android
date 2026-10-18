@@ -3,20 +3,6 @@ package com.mpsdiag.diag
 import java.io.IOException
 import java.util.Locale
 
-/** One value on a live-data screen, decoded from the reply to `21 <localId>`. */
-class LiveParam(
-    val label: String,
-    val localId: Int,
-    private val decoder: (ByteArray) -> String,
-) {
-    /** Decodes [r] (a `61 <localId> ...` reply); "—" if the reply is too short. */
-    fun decode(r: ByteArray): String = try {
-        decoder(r)
-    } catch (_: IndexOutOfBoundsException) {
-        "—"
-    }
-}
-
 /** Diesel engines with different forced-regeneration commands. */
 enum class DieselEngine(val label: String, val regenerationId: Int) {
     E4N15("4N15 (2.4 L diesel)", 0x50),
@@ -81,27 +67,9 @@ object Dpf {
         LiveParam("DPF warning light (yellow)", 0x4E) { onOff(it.u8(6) and 0x01 != 0) },
     )
 
-    /**
-     * Reads every local id used by [params] once. Values whose request failed are "—".
-     * Throws [NoResponseException] only if the ECU answered nothing at all.
-     */
+    /** Reads every value in [params] once (see [Live.poll]). */
     @Throws(IOException::class)
-    fun poll(diag: Diag, params: List<LiveParam>): List<String> {
-        val replies = mutableMapOf<Int, ByteArray?>()
-        var lastError: IOException? = null
-        for (id in params.map { it.localId }.distinct()) {
-            replies[id] = try {
-                diag.request(0x21, id)
-            } catch (e: NoResponseException) {
-                lastError = e
-                null
-            } catch (e: NegativeResponseException) {
-                null
-            }
-        }
-        if (replies.values.all { it == null } && lastError != null) throw lastError!!
-        return params.map { p -> replies[p.localId]?.let { p.decode(it) } ?: "—" }
-    }
+    fun poll(diag: Diag, params: List<LiveParam>): List<String> = Live.poll(diag, params)
 
     /**
      * Opens the engine ECU and checks whether it supports the DPF routines.

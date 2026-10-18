@@ -7,7 +7,7 @@
 #   R8_JAR       r8.jar (provides the D8 dexer)
 #   aapt2, zipalign, apksigner, javac on PATH (or AAPT2/ZIPALIGN/APKSIGNER variables)
 #
-# Output: build/mps-diag.apk
+# Output: build/mps-scan-tool.apk
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -74,6 +74,6 @@ cp "$OUT/base.apk" "$OUT/unsigned.apk"
 
 echo "==> Signing"
 "$APKSIGNER" sign --ks "$KEYSTORE" --ks-pass "pass:$KEYSTORE_PASS" --ks-key-alias "$KEY_ALIAS" \
-  --min-sdk-version "$MIN_SDK" --out "$OUT/mps-diag.apk" "$OUT/aligned.apk" 2>&1 | grep -v JAVA_TOOL_OPTIONS || true
-"$APKSIGNER" verify -v "$OUT/mps-diag.apk" 2>&1 | grep -E "^Verifie[ds]" || { echo "Signature verification failed"; exit 1; }
-echo "Built $OUT/mps-diag.apk ($VERSION_NAME / $VERSION_CODE)"
+  --min-sdk-version "$MIN_SDK" --out "$OUT/mps-scan-tool.apk" "$OUT/aligned.apk" 2>&1 | grep -v JAVA_TOOL_OPTIONS || true
+"$APKSIGNER" verify -v "$OUT/mps-scan-tool.apk" 2>&1 | grep -E "^Verifie[ds]" || { echo "Signature verification failed"; exit 1; }
+echo "Built $OUT/mps-scan-tool.apk ($VERSION_NAME / $VERSION_CODE)"
