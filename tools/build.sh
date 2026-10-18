@@ -26,7 +26,7 @@ KEYSTORE_PASS="${KEYSTORE_PASS:-android}"
 KEY_ALIAS="${KEY_ALIAS:-androiddebugkey}"
 
 MIN_SDK=23
-TARGET_SDK=35
+TARGET_SDK=34
 VERSION_CODE="$(grep -E '^\s*versionCode\s*=' "$ROOT/app/build.gradle.kts" | grep -oE '[0-9]+')"
 VERSION_NAME="$(grep -E '^\s*versionName\s*=' "$ROOT/app/build.gradle.kts" | grep -oE '"[^"]+"' | tr -d '"')"
 

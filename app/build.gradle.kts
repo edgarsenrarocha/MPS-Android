@@ -10,9 +10,11 @@ android {
     defaultConfig {
         applicationId = "com.mpsdiag"
         minSdk = 23
-        targetSdk = 35
-        versionCode = 4
-        versionName = "0.4.0"
+        // 34, not 35: Android 15 forces edge-to-edge drawing on apps targeting 35, which puts
+        // content under the title and navigation bars of these framework (non-AndroidX) screens.
+        targetSdk = 34
+        versionCode = 5
+        versionName = "0.4.1"
     }
 
     signingConfigs {
