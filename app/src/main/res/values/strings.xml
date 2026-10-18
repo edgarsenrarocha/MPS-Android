@@ -20,6 +20,31 @@
     <string name="permission_needed">Bluetooth permission is needed to talk to the adapter</string>
     <string name="connect_first">Connect to an adapter first</string>
 
+    <!-- Connection screen -->
+    <string name="menu_connection">Connection</string>
+    <string name="conn_bluetooth">Bluetooth</string>
+    <string name="conn_bt_settings">Bluetooth settings</string>
+    <string name="conn_bt_none">This phone has no Bluetooth.</string>
+    <string name="conn_bt_off">Bluetooth is off.</string>
+    <string name="conn_bt_no_permission">MPS Diag needs permission to use Bluetooth (and, on Android 11 and older, location for scanning).</string>
+    <string name="conn_bt_ready">Plug the adapter into the OBD socket and turn the ignition ON, then tap your adapter below. Not listed? Tap Scan.</string>
+    <string name="conn_bt_scanning">Scanning for adapters… keep the adapter plugged in and powered.</string>
+    <string name="conn_allow">Allow Bluetooth</string>
+    <string name="conn_turn_on">Turn Bluetooth on</string>
+    <string name="conn_scan">Scan for adapters</string>
+    <string name="conn_stop_scan">Stop scan</string>
+    <string name="conn_devices_hint">Adapters</string>
+    <string name="conn_no_devices">No paired devices. Tap Scan, or pair the adapter in Bluetooth settings (PIN usually 1234 or 0000).</string>
+    <string name="conn_paired">Paired</string>
+    <string name="conn_found">Found</string>
+    <string name="conn_last_used">Last used</string>
+    <string name="conn_likely_obd">Looks like an OBD adapter</string>
+    <string name="conn_connected_here">Connected</string>
+    <string name="conn_test">Test connection</string>
+    <string name="conn_test_title">Connection test</string>
+    <string name="conn_step_connect">Connect to adapter</string>
+    <string name="conn_connect_hints">%1$s\n\nCheck that: the adapter is plugged in and its light is on · it is not connected to another app or phone · it is paired (PIN 1234 or 0000) · for BLE adapters, don\'t pair in settings — just scan here.</string>
+
     <!-- Home -->
     <string name="menu_dpf">DPF</string>
     <string name="menu_dpf_desc">Live data, forced regeneration, DPF replacement</string>

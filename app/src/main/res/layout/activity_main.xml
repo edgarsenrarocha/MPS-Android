@@ -9,9 +9,10 @@
         android:orientation="vertical"
         android:padding="@dimen/screen_padding">
 
-        <!-- Connection card -->
+        <!-- Connection card (tap to open the Connection screen) -->
         <LinearLayout
-            style="@style/Card"
+            android:id="@+id/statusCard"
+            style="@style/MenuTile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"

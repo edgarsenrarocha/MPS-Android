@@ -1,5 +1,6 @@
 package com.mpsdiag
 
+import com.mpsdiag.diag.ConnectionTest
 import com.mpsdiag.diag.DieselEngine
 import com.mpsdiag.diag.Diag
 import com.mpsdiag.diag.Dpf
@@ -51,6 +52,7 @@ class ProtocolTest {
                 else -> null
             }
             0x7DF -> when (r) {
+                "0100" -> listOf(bytes(0x41, 0x00, 0xBE, 0x3F, 0xA8, 0x13))
                 "03" -> listOf(bytes(0x43, 0x02, 0x01, 0x33, 0x02, 0x00))
                 "07" -> listOf(bytes(0x47, 0x00))
                 "04" -> listOf(bytes(0x44))
@@ -186,6 +188,27 @@ class ProtocolTest {
             fail("expected no response")
         } catch (_: NoResponseException) {
         }
+    }
+
+    @Test
+    fun connectionTestWalksTheWholeChain() {
+        val steps = mutableListOf<ConnectionTest.Step>()
+        ConnectionTest.run(connect(car())) { steps += it }
+        assertEquals(listOf("Adapter", "Battery voltage", "Car (CAN bus)", "Engine ECU"), steps.map { it.title })
+        assertTrue(steps.all { it.outcome == ConnectionTest.Outcome.OK })
+        assertEquals("12.6 V", steps[1].detail)
+        assertTrue(steps[3].detail.contains(vin))
+        assertTrue(steps[3].detail.contains("4N15"))
+    }
+
+    @Test
+    fun connectionTestStopsWhenCarIsSilent() {
+        val steps = mutableListOf<ConnectionTest.Step>()
+        val silent = FakeElm { _, _ -> null }
+        ConnectionTest.run(connect(silent)) { steps += it }
+        assertEquals(ConnectionTest.Outcome.FAIL, steps.last().outcome)
+        assertEquals("Car (CAN bus)", steps.last().title)
+        assertTrue(steps.last().detail.contains("ignition"))
     }
 
     @Test

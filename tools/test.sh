@@ -17,5 +17,6 @@ mkdir -p "$OUT"
   $(find "$ROOT/app/src/main/java/com/mpsdiag"/{diag,elm,transport} -name '*.kt') \
   $(find "$ROOT/app/src/test/java" -name '*.kt') 2>&1 | grep -v JAVA_TOOL_OPTIONS || true
 
-TESTS=$(cd "$OUT" && find . -name '*Test.class' | sed 's#^\./##; s#\.class$##; s#/#.#g')
+# Test classes are the *Test.kt files under app/src/test/java.
+TESTS=$(cd "$ROOT/app/src/test/java" && find . -name '*Test.kt' | sed 's#^\./##; s#\.kt$##; s#/#.#g')
 java -cp "$OUT:$JUNIT_CP:$KOTLIN_HOME/lib/kotlin-stdlib.jar" org.junit.runner.JUnitCore $TESTS 2>&1 | grep -v JAVA_TOOL_OPTIONS

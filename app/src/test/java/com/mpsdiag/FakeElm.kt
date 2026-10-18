@@ -65,6 +65,8 @@ class FakeElm(private val ecu: (Int, ByteArray) -> List<ByteArray>?) : Transport
                 out.append("\r\rELM327 v1.5\r")
             }
             cmd == "ATE0" -> { echo = false; out.append("OK\r") }
+            cmd == "ATI" -> out.append("ELM327 v1.5\r")
+            cmd == "ATRV" -> out.append("12.6V\r")
             cmd == "ATH1" -> { headers = true; out.append("OK\r") }
             cmd.startsWith("ATSH") -> { tx = cmd.substring(4).toInt(16); out.append("OK\r") }
             cmd.startsWith("ATCRA") -> { rx = cmd.substring(5).toInt(16); out.append("OK\r") }

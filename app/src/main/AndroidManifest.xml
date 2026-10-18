@@ -35,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.mpsdiag.ui.ConnectionActivity" android:label="@string/menu_connection" />
         <activity android:name="com.mpsdiag.ui.DpfActivity" android:label="@string/menu_dpf" />
         <activity android:name="com.mpsdiag.ui.OilActivity" android:label="@string/menu_oil" />
         <activity android:name="com.mpsdiag.ui.DtcActivity" android:label="@string/menu_dtc" />

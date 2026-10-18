@@ -16,7 +16,7 @@ class NoResponseException(message: String) : IOException(message)
  * Headers are kept on (ATH1) so every reply line is "<CAN id> <PCI> <data...>", which lets us
  * reassemble multi-frame (ISO-TP) answers ourselves and ignore traffic from other modules.
  */
-class Diag(private val elm: Elm327) {
+class Diag(val elm: Elm327) {
 
     var target: Module? = null
         private set

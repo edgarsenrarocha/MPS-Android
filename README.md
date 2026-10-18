@@ -26,9 +26,15 @@ and Wi-Fi (default `192.168.0.10:35000`). Requires Android 6.0 or newer.
 
 ## Using it
 
-1. Ignition ON (engine running for regeneration), adapter plugged in.
-2. Tap **Connect**, choose Bluetooth or Wi-Fi, and pick the adapter.
-3. Open a feature from the home screen.
+1. Plug the adapter in and turn the ignition ON (engine running for regeneration).
+2. On the home screen tap **Connect** to open the **Connection** screen:
+   - allow Bluetooth access / turn Bluetooth on if asked;
+   - tap your adapter in the list (paired adapters are listed; tap **Scan for adapters** to find
+     new or BLE ones) – or enter a Wi-Fi adapter's address;
+   - after connecting, a **connection test** runs automatically: adapter → battery voltage →
+     car CAN bus → engine ECU (VIN, engine, DPF support). Run it again any time with
+     **Test connection**.
+3. Go back and open a feature from the home screen.
 
 **Forced regeneration** – the screen shows live data first; the button enables once the ECU
 answers. The engine type is guessed from the VIN; confirm it. Follow the on-screen instructions:

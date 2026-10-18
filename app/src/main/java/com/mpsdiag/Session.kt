@@ -33,6 +33,11 @@ object Session {
 
     val isConnected: Boolean get() = transport?.isOpen == true && diag != null
 
+    /** Name of the adapter being connected to, or null when idle. */
+    @Volatile
+    var connectingTo: String? = null
+        private set
+
     /** Recent adapter traffic, newest last. */
     val log = ArrayDeque<String>()
     private const val LOG_LIMIT = 2_000
@@ -67,6 +72,8 @@ object Session {
      * to [done] on the main thread.
      */
     fun connect(t: Transport, done: (Result<String>) -> Unit) {
+        connectingTo = t.displayName
+        notifyChanged()
         io.execute {
             val result = runCatching {
                 disconnectNow()
@@ -79,7 +86,11 @@ object Session {
                 diag = d
                 version
             }
-            if (result.isFailure) disconnectNow()
+            if (result.isFailure) {
+                t.close() // release a half-open socket/GATT connection
+                disconnectNow()
+            }
+            connectingTo = null
             notifyChanged()
             main.post { done(result) }
         }
