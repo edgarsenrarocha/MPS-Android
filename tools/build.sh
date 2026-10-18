@@ -2,7 +2,7 @@
 # Builds and signs the APK without Gradle / Android Studio, using only command-line tools.
 #
 # Requirements (paths can be overridden with the environment variables below):
-#   ANDROID_JAR  android.jar of platform 35 (from an SDK: platforms/android-35/android.jar)
+#   ANDROID_JAR  android.jar of platform 34 (from an SDK: platforms/android-34/android.jar)
 #   KOTLIN_HOME  Kotlin compiler distribution (contains bin/kotlinc and lib/kotlin-stdlib.jar)
 #   R8_JAR       r8.jar (provides the D8 dexer)
 #   aapt2, zipalign, apksigner, javac on PATH (or AAPT2/ZIPALIGN/APKSIGNER variables)
@@ -14,7 +14,8 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 APP="$ROOT/app/src/main"
 OUT="$ROOT/build"
 
-ANDROID_JAR="${ANDROID_JAR:-${ANDROID_HOME:-/opt/android-sdk}/platforms/android-35/android.jar}"
+# Platform 34 is used for linking because older aapt2 builds cannot read the android-35 resource table.
+ANDROID_JAR="${ANDROID_JAR:-${ANDROID_HOME:-/opt/android-sdk}/platforms/android-34/android.jar}"
 KOTLIN_HOME="${KOTLIN_HOME:-/opt/buildtools/kotlinc}"
 R8_JAR="${R8_JAR:-/opt/buildtools/r8.jar}"
 AAPT2="${AAPT2:-aapt2}"
@@ -24,7 +25,7 @@ KEYSTORE="${KEYSTORE:-$ROOT/signing/debug.keystore}"
 KEYSTORE_PASS="${KEYSTORE_PASS:-android}"
 KEY_ALIAS="${KEY_ALIAS:-androiddebugkey}"
 
-MIN_SDK=21
+MIN_SDK=23
 TARGET_SDK=35
 VERSION_CODE="$(grep -E '^\s*versionCode\s*=' "$ROOT/app/build.gradle.kts" | grep -oE '[0-9]+')"
 VERSION_NAME="$(grep -E '^\s*versionName\s*=' "$ROOT/app/build.gradle.kts" | grep -oE '"[^"]+"' | tr -d '"')"
@@ -74,5 +75,5 @@ cp "$OUT/base.apk" "$OUT/unsigned.apk"
 echo "==> Signing"
 "$APKSIGNER" sign --ks "$KEYSTORE" --ks-pass "pass:$KEYSTORE_PASS" --ks-key-alias "$KEY_ALIAS" \
   --min-sdk-version "$MIN_SDK" --out "$OUT/mps-diag.apk" "$OUT/aligned.apk" 2>&1 | grep -v JAVA_TOOL_OPTIONS || true
-"$APKSIGNER" verify "$OUT/mps-diag.apk" 2>&1 | grep -v JAVA_TOOL_OPTIONS
+"$APKSIGNER" verify -v "$OUT/mps-diag.apk" 2>&1 | grep -E "^Verifie[ds]" || { echo "Signature verification failed"; exit 1; }
 echo "Built $OUT/mps-diag.apk ($VERSION_NAME / $VERSION_CODE)"

@@ -1,6 +1,5 @@
 package com.mpsdiag.elm
 
-import android.util.Log
 import com.mpsdiag.transport.Transport
 import java.io.IOException
 
@@ -102,12 +101,10 @@ class Elm327(private val transport: Transport) {
         command(cmd, timeoutMs).any { it.equals("OK", ignoreCase = true) || it.startsWith("ELM", ignoreCase = true) }
 
     private fun log(s: String) {
-        Log.d(TAG, s)
         trafficListener?.invoke(s)
     }
 
     companion object {
-        private const val TAG = "Elm327"
         const val DEFAULT_TIMEOUT_MS = 2_000L
         const val RESET_TIMEOUT_MS = 4_000L
 

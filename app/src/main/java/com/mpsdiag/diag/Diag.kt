@@ -30,8 +30,10 @@ class Diag(private val elm: Elm327) {
         elm.at("ATL0")        // no linefeeds
         elm.at("ATS1")        // spaces between bytes
         elm.at("ATH1")        // show CAN ids
+        elm.at("ATD0")        // no DLC in replies
         elm.at("ATSP6")       // ISO 15765-4 CAN 11-bit 500k
         elm.at("ATAT1")       // adaptive timing
+        elm.at("ATST80")      // wait up to ~0.5 s for a module to answer
         target = null
         return version
     }
@@ -44,10 +46,24 @@ class Diag(private val elm: Elm327) {
         val rx = "%03X".format(module.responseId)
         elm.at("ATSH$tx")
         elm.at("ATCRA$rx")
-        elm.at("ATFCSH$tx")
-        elm.at("ATFCSD300000") // flow control: continue to send, no block limit, no gap
-        elm.at("ATFCSM1")      // use the flow control header/data set above
+        if (module.customFlowControl) {
+            elm.at("ATFCSH$tx")
+            elm.at("ATFCSD30080A") // flow control: clear to send, block size 8, 10 ms gap
+            elm.at("ATFCSM1")      // use the flow control header/data set above
+        } else {
+            elm.at("ATFCSM0")      // ELM327 default flow control
+        }
         target = module
+    }
+
+    /**
+     * Selects [module] and opens the Mitsubishi extended diagnostic session (10 92).
+     * Generic OBD-II needs no session.
+     */
+    @Throws(IOException::class)
+    fun open(module: Module) {
+        select(module)
+        if (!module.obd) request(0x10, 0x92)
     }
 
     /**

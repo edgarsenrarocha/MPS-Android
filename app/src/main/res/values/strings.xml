@@ -10,6 +10,9 @@
     <string name="not_connected">No adapter connected</string>
     <string name="connect_failed">Connection failed: %1$s</string>
     <string name="pick_adapter">Choose OBD adapter</string>
+    <string name="adapter_bluetooth">Bluetooth adapter</string>
+    <string name="adapter_wifi">Wi-Fi adapter</string>
+    <string name="wifi_hint">Join the adapter\'s Wi-Fi network first, then enter its address (host:port).</string>
     <string name="scan_ble">Scan BLE</string>
     <string name="scanning">Scanning for BLE adapters…</string>
     <string name="bt_not_available">This phone has no Bluetooth</string>
@@ -40,4 +43,41 @@
     <string name="value_na">—</string>
     <string name="clear_log">Clear</string>
     <string name="share_log">Share</string>
+    <string name="not_responding">Engine ECU is not responding: %1$s</string>
+    <string name="live">Live data</string>
+
+    <!-- DPF -->
+    <string name="dpf_force_regen">Force DPF regeneration</string>
+    <string name="dpf_service_reset">DPF service reset…</string>
+    <string name="dpf_not_supported">This ECU does not support DPF regeneration or service resets.</string>
+    <string name="dpf_vehicle">VIN %1$s · engine %2$s</string>
+    <string name="dpf_vehicle_unknown">VIN not reported · pick the engine when starting</string>
+    <string name="dpf_pick_engine">Which engine?</string>
+    <string name="dpf_regen_title">Forced regeneration — %1$s</string>
+    <string name="dpf_regen_warning_4n15">The exhaust gets very hot (about 600 °C) during regeneration.\n\n• Do it outdoors or in a well-ventilated area, away from people and anything flammable near the exhaust.\n• If the engine warning light is on, read and fix fault codes first.\n• Vehicle on level ground, selector in P / neutral with handbrake on.\n• Engine running at idle, warmed up.\n\nAfter you press Start, idle rises to about 1500–2000 rpm. It stops by itself after about 25 minutes, or when you press the accelerator. When it completes, the DPF light goes out.</string>
+    <string name="dpf_regen_warning_4n14">On the 4N14 this regeneration is done while driving.\n\n• Use it when the engine warning light and the DPF symbol are on.\n• Start and warm the engine at idle, parked on level ground in P.\n• Press Start: idle rises above 1000 rpm and the yellow DPF symbol confirms it started.\n• Then drive in 3rd gear at 40 km/h or more and at least 2000 rpm (a bit more if it does not start). Expect 20–45 minutes.\n• Stopping may interrupt it; it resumes if you drive off again within about 100 seconds.\n\nAfterwards switch the ignition off and on and check the DPF symbol is gone. The exhaust is very hot when you stop — keep people and flammable things away.</string>
+    <string name="dpf_regen_sent">The ECU accepted the request. Watch \"DPF regeneration operating\" and the time remaining below.</string>
+    <string name="dpf_pick_service">DPF service reset</string>
+    <string name="dpf_service_confirm">Run \"%1$s\"?\n\nOnly do this after the matching repair or part replacement. Ignition ON.</string>
+    <string name="dpf_service_done">DPF service reset completed.</string>
+
+    <!-- Oil -->
+    <string name="oil_reset">Reset oil service (P252F)</string>
+    <string name="oil_help">After an oil change on a 4N15 or 4N14 engine, if fault P252F (oil level too high / oil dilution) appears, reset the oil service here.\n\nIgnition ON, engine OFF. No forced DPF regeneration is needed afterwards.</string>
+    <string name="oil_confirm">Reset the oil dilution / oil change learning in the engine ECU?\n\nIgnition must be ON with the engine OFF. Only do this right after an oil change.</string>
+    <string name="oil_done">Oil service reset completed.</string>
+
+    <!-- Fault codes -->
+    <string name="dtc_module">Module</string>
+    <string name="dtc_read">Read codes</string>
+    <string name="dtc_clear">Clear codes</string>
+    <string name="dtc_scan_all">Scan all modules</string>
+    <string name="dtc_hint">Choose a module and read its fault codes. Ignition ON.</string>
+    <string name="dtc_none">%1$s: no fault codes</string>
+    <string name="dtc_found">%1$s: %2$d fault code(s)</string>
+    <string name="dtc_clear_confirm">Clear all fault codes in \"%1$s\"?\n\nIgnition ON, engine OFF. Codes for faults that are still present will come back.</string>
+    <string name="dtc_cleared">Fault codes cleared in %1$s. Reading again…</string>
+    <string name="dtc_clear_failed">Could not clear codes in %1$s: %2$s\nThe fault may still be present — fix it and try again.</string>
+    <string name="dtc_scanning">Scanning %1$s (%2$d of %3$d)…</string>
+    <string name="dtc_no_answer">no answer</string>
 </resources>
