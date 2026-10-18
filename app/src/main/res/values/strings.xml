@@ -75,6 +75,10 @@
     <string name="live">Live data</string>
     <string name="module_not_responding">%1$s is not responding: %2$s</string>
     <string name="choose_values">Choose values</string>
+    <string name="choose_variant">Choose type</string>
+    <string name="live_variant">Live data · %1$s</string>
+    <string name="continue_label">Continue</string>
+    <string name="next">Next</string>
     <string name="select_all">Show all</string>
 
     <!-- DPF -->
